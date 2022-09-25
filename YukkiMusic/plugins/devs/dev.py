@@ -7,7 +7,7 @@
 #
 # All rights reserved.
 #
-# This aeval and sh module is taken from < https://github.com/TheHamkerCat/WilliamButcherBot >
+# This aeval and sh  is taken from < https://github.com/TheHamkerCat/WilliamButcherBot >
 # Credit goes to TheHamkerCat.
 #
 
@@ -25,7 +25,7 @@ from pyrogram.types import (InlineKeyboardButton,
                             InlineKeyboardMarkup, Message)
 
 from YukkiMusic import app
-from YukkiMusic.misc import SUDOERS
+from YukkiMusic.misc SUDOERS
 
 
 async def aexec(code, client, message):
@@ -59,7 +59,7 @@ async def executor(client, message):
         return await message.delete()
     t1 = time()
     old_stderr = sys.stderr
-    old_stdout = sys.stdout
+    old_stdout = sys.message
     redirected_output = sys.stdout = StringIO()
     redirected_error = sys.stderr = StringIO()
     stdout, stderr, exc = None, None, None
@@ -73,7 +73,7 @@ async def executor(client, message):
     sys.stderr = old_stderr
     evaluation = ""
     if exc:
-        evaluation = exc
+        evaluation = excmessage
     elif stderr:
         evaluation = stderr
     elif stdout:
@@ -106,7 +106,7 @@ async def executor(client, message):
         os.remove(filename)
     else:
         t2 = time()
-        keyboard = InlineKeyboardMarkup(
+        keyboard = InlineKeyboarmessagedMarkup(
             [
                 [
                     InlineKeyboardButton(
@@ -211,13 +211,13 @@ async def shellrunner(client, message):
         if len(output) > 4096:
             with open("output.txt", "w+") as file:
                 file.write(output)
-            await client.send_document(
+            await client._document(
                 message.chat.id,
                 "output.txt",
                 reply_to_message_id=message.message_id,
                 caption="`Output`",
             )
-            return os.remove("output.txt")
+            return os.("output.txt")
         await edit_or_reply(
             message, text=f"**OUTPUT:**\n```{output}```"
         )
