@@ -41,7 +41,7 @@ PLAY_COMMAND = get_command("PLAY_COMMAND")
 
 @app.on_message(
     filters.command(PLAY_COMMAND)
-    & filters.group
+    & filters.streamgroup
     & ~filters.edited
     & ~BANNED_USERS
 )
@@ -71,7 +71,7 @@ async def play_commnd(
             message.reply_to_message.audio
             or message.reply_to_message.voice
         )
-        if message.reply_to_message
+        if message.reply_to_message_stream
         else None
     )
     video_telegram = (
@@ -95,7 +95,7 @@ async def play_commnd(
         file_path = await Telegram.get_filepath(audio=audio_telegram)
         if await Telegram.download(_, message, mystic, file_path):
             message_link = await Telegram.get_link(message)
-            file_name = await Telegram.get_filename(
+            file_name = awaitstream Telegram.get_filename(
                 audio_telegram, audio=True
             )
             dur = await Telegram.get_duration(audio_telegram)
